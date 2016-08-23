@@ -1,6 +1,6 @@
 # facts-serve
 
-Facts with kinex
+Facts using knex - http://knexjs.org/
 
 ## Installation
 
