@@ -1,7 +1,7 @@
 'use strict';
 
-const router = require('express').Router();
 const bodyParser = require('body-parser');
+const router = require('express').Router();
 const fid = require('../lib/fids');
 const knex = require('../lib/knex');
 
@@ -24,10 +24,32 @@ function createRow(body) {
   };
 }
 
-function getRows(cb) {
-  knex
-    .select('id', 'description', 'source')
-    .from(TABLE)
+function getRows(id, cb) {
+  if (typeof id === 'function') {
+    cb = id;
+    id = undefined;
+  }
+
+  const query = knex
+    .select(
+      'id',
+      'description',
+      'source')
+    .from(TABLE);
+
+  if (id) {
+    query.where({
+      id: id
+    });
+  }
+
+  query.asCallback(cb);
+}
+
+function update(id, body, cb) {
+  knex(TABLE)
+    .where('id', id)
+    .update(body)
     .asCallback(cb);
 }
 
@@ -37,7 +59,27 @@ router.get('/facts', (req, res, next) => {
 
     res.json(facts);
   });
+});
 
+router.get('/facts/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  getRows(id, (err, facts) => {
+    if (err) return next(err);
+
+    res.json(facts[0]);
+  });
+});
+
+router.put('/facts/:id', (req, res, next) => {
+  const id = req.params.id;
+  const body = req.body;
+
+  update(id, body, (err, fact) => {
+    if (err) return next(err);
+
+    res.json(fact);
+  });
 });
 
 router.post('/facts', (req, res, next) => {
