@@ -1,4 +1,4 @@
-# facts-serve
+# facts-serve-knex
 
 Facts using knex - http://knexjs.org/
 
