@@ -1,0 +1,48 @@
+{
+  "name": "facts-serve-knex",
+  "version": "1.0.0",
+  "description": "Facts with knex",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "NODE_ENV=dev node server.js",
+    "lint": "eslint .",
+    "coverage": "istanbul cover _mocha -- -R dot",
+    "docs": "ibl-documentation-generator"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nspragg/facts-serve-knex-knex.git"
+  },
+  "author": "ibl-team@lists.forge.bbc.co.uk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nspragg/facts-serve-knex-knex.git/issues"
+  },
+  "homepage": "https://github.com/nspragg/facts-serve-knex-knex.git",
+  "devDependencies": {
+    "@ibl/documentation-generator": "^2.0.0",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2",
+    "istanbul": "^0.4.1",
+    "supertest": "^0.15.0",
+    "eslint": "^1.10.3",
+    "eslint-config-iplayer-es6": "^1.2.0"
+  },
+  "dependencies": {
+    "@ibl/logger": "^2.0.1",
+    "@ibl/server": "^4.1.0",
+    "@ibl/set-route-name": "^1.0.0",
+    "@ibl/stats": "^3.0.1",
+    "body-parser": "^1.15.2",
+    "config": "^1.10.0",
+    "express": "^4.11.1",
+    "knex": "^0.11.10",
+    "lodash": "^4.15.0",
+    "pg": "^6.1.0"
+  },
+  "eslintConfig": {
+    "extends": "iplayer-es6"
+  },
+  "private": true
+}

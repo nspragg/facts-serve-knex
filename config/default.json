@@ -1,0 +1,15 @@
+{
+  "logger": {
+    "level": "warn",
+    "file": "application.log"
+  },
+  "stats": {
+    "prefix": "bbc.ibl.facts_serve.dev."
+  },
+  "version": "dev",
+  "host": "http://127.0.0.1:7080",
+  "whitelist": false,
+  "postgres": {
+    "connectionString": "postgres://localhost/facts"
+  }
+}
